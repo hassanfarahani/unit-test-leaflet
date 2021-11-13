@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <WellMap />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// https://api.openbrewerydb.org/breweries
+
+
+import WellMap from './components/WellMap.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    WellMap
   }
 }
 </script>
