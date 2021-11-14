@@ -1,9 +1,7 @@
 <template>
   <div class="map">
-    <!-- <h1>Welcome to my brew</h1> -->
     <l-map ref="map" :zoom="zoom" :center="center">
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-      <!-- <l-marker :lat-lng="marker"></l-marker> -->
     </l-map>
   </div>
 </template>
@@ -17,7 +15,6 @@ export default {
   data() {
       return {
       zoom:13,
-      // center: L.latLng(47.413220, -1.219482),
       center: [49.5028240000004, -108.6315335],
       url:'http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
@@ -29,7 +26,8 @@ export default {
         [49.50009, -108.641218],
         [49.495815, -108.641056]
       ],
-      lMap: {}
+      lMap: {},
+      wellPolyline: null
     }
   },
   components: {
@@ -39,7 +37,20 @@ export default {
   },
   mounted() {
     this.lMap = this.$refs.map.mapObject
-    L.polyline(this.latLngs, { color: 'red' }).addTo(this.lMap)
+    this.wellPolyline = L.polyline(this.latLngs, { color: 'red' }).addTo(this.lMap)
+    // this.wellPolyline.setText('well name', {
+    //   repeat: false,
+    //   below: true,
+    //   center: true,
+    //   offset: 15,
+    //   oreintation: 'auto',
+    //   attributes: {
+    //     fill: 'red',
+    //     'font-size': '13',
+    //     x: 0
+    //   }
+    // })
+    // L.control.scale({ position: 'topleft' }).addTo(this.lMap)
   }
 
 }
